@@ -8,12 +8,15 @@ const crypto = require('crypto');
 const path = require('path');
 const uuid = require('uuid');
 const Message = require('./Message');
+require('dotenv').config();
+const dbURI = process.env.MONGODB_URI;
+const secret = process.env.SECRET;
 
 
 //Mongo DB connect
 
 //Mongo DB  Atlas-Verbindungs-URL
-const mongoURI = "mongodb+srv://justuszimmermann:5OuTiqxzO3lkeQhX@leaderbord.ygrwu.mongodb.net/?retryWrites=true&w=majority&appName=Leaderbord";
+const mongoURI = dbURI;
 const client = new MongoClient(mongoURI);
 
 // Verbindung zur MongoDB herstellen
@@ -42,7 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../client')));
 app.use(session({
     //have to change that one
-    secret: '3456t54ejhktehzt4',
+    secret: secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -89,8 +92,8 @@ app.get('/help', (req,res)=>{
     res.sendFile(path.join(__dirname,'../client/help.html'));
 })
 
-app.get('/leaderbord', (req,res)=>{
-    res.sendFile(path.join(__dirname,'../client/leaderbord.html'));
+app.get('/leaderboard', (req,res)=>{
+    res.sendFile(path.join(__dirname,'../client/leaderboard.html'));
 })
 app.get('/api/leaders', async (req,res)=>{
     try {
@@ -139,7 +142,7 @@ app.post('/send-profile', async(req, res)=>{
         const newMessage = new Message({coins, name, id});
         await newMessage.save();
         console.log('saved to mongo db');
-        res.sendFile(path.join(__dirname, '../client/leaderbord.html'))
+        res.sendFile(path.join(__dirname, '../client/leaderboard.html'))
     }
     catch(error){
         console.log(error);

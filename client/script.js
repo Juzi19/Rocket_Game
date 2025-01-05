@@ -239,8 +239,8 @@ const t1 = new Triangle(20,20, 'black', 50,50);
 const c1 = new Circle(10,'black', 30,30);
 const coin = new Coin('./coin.png', 20, 200,200,1);
 
-const leaderbord = document.getElementById('addtoleaderbord');
-const leaderbord_coins = document.getElementById('formcoins');
+const leaderboard = document.getElementById('addtoleaderboard');
+const leaderboard_coins = document.getElementById('formcoins');
 
 //Obstacles list, used to manage the obstacles
 //List lenght depending of level, that is played
@@ -391,9 +391,9 @@ function lost(){
     //display text
     ctx.fillText(`Verloren in Level ${mylevel}. Münzen: ${rewards}`, canvas.width/2, canvas.height/2);
 
-    leaderbord.style.zIndex = 10;
-    leaderbord.style.visibility = 'visible';
-    leaderbord_coins.innerHTML = `Münzen gesammelt: ${rewards}`
+    leaderboard.style.zIndex = 10;
+    leaderboard.style.visibility = 'visible';
+    leaderboard_coins.innerHTML = `Münzen gesammelt: ${rewards}`
 
     coin_input.value = rewards;
 

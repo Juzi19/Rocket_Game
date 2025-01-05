@@ -14,16 +14,16 @@
             <p id="boost">Boost</p>
             <progress value="0" id="progressbar"></progress>
             <p id="coins">Münzen: 0</p>
-            <a href="/leaderbord" id="leaderbord">Leaderbord</a>
+            <a href="/leaderboard" id="leaderboard">Leaderboard</a>
             <a href="/help" id="help">Hilfe</a>
         </div>
         <div>
             <canvas id="game_display"></canvas>
         </div>
-        <div id="addtoleaderbord">
+        <div id="addtoleaderboard">
             <form action="/send-profile" method="post">
-                <p>Füge deinen Erfolg zum Leaderbord hinzu:</p>
-                <input type="text" name="name" id="name" placeholder="Name...">
+                <p>Füge deinen Erfolg zum Leaderboard hinzu:</p>
+                <input type="text" name="name" id="name" placeholder="Name..." required="true">
                 <input type="hidden" name="csrfToken" id="csrf" value="">
                 <input type="hidden" name="coins" id="coin_input" value="0">
                 <p id="formcoins"></p>

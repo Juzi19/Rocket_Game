@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderbord</title>
+    <title>Leaderboard</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="container_center_2">
         <img src="./coin.png" alt="Münze">
         <h1>Top 10 Leaderboard</h1>
-        <ul id="leaderboard">
+        <ul id="leaderboard2">
         </ul>
         <a href="/" style="padding: 0.7rem;">Zurück zum Spiel</a>
     </div>
@@ -31,7 +31,7 @@
         }
 
         function displayLeaderboard(entries) {
-            const leaderboard = document.getElementById('leaderboard');
+            const leaderboard = document.getElementById('leaderboard2');
             leaderboard.innerHTML = ''; // Vorherige Inhalte löschen
 
             entries.forEach((entry, index) => {

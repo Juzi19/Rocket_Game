@@ -37,6 +37,8 @@ a{
     color: white;
     background-color: black;
     padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
     border-radius: 1rem;
 }
 a:hover{
@@ -66,7 +68,7 @@ a:hover{
     grid-row: 1/2;
     text-align: center;
 }
-#leaderbord{
+#leaderboard{
     grid-column: 1/2;
     grid-row: 2/3;
     align-self: center;
@@ -100,7 +102,7 @@ progress::-webkit-progress-value {
 progress::-moz-progress-bar {
     background-color: orange; /* Fortschrittsfarbe */
 }
-#addtoleaderbord{
+#addtoleaderboard{
     position: absolute;
     display: flex;
     align-items: center;
