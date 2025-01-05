@@ -11,6 +11,7 @@
         <img src="./coin.png" alt="Münze">
         <h1>Top 10 Leaderboard</h1>
         <ul id="leaderboard2">
+            <!--Top 10 list items-->
         </ul>
         <a href="/" style="padding: 0.7rem;">Zurück zum Spiel</a>
     </div>
@@ -32,8 +33,7 @@
 
         function displayLeaderboard(entries) {
             const leaderboard = document.getElementById('leaderboard2');
-            leaderboard.innerHTML = ''; // Vorherige Inhalte löschen
-
+            leaderboard.innerHTML = ''; // clear previous items
             entries.forEach((entry, index) => {
                 const listItem = document.createElement('li');
                 listItem.textContent = `${index + 1}. ${entry.name} - ${entry.coins} Coins`;
@@ -41,7 +41,7 @@
             });
         }
 
-    // Die Daten abrufen und anzeigen, wenn die Seite geladen wird
+    // fetches and shows data
     fetchTop10();
 
 

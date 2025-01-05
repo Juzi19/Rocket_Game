@@ -86,21 +86,20 @@ progress{
     grid-row: 2/3;
     width: 100%;
     background-color: white;
-    -webkit-appearance: none; /* Standard-Styling deaktivieren */
+    -webkit-appearance: none; 
     appearance: none;
 }
-/* Webkit spezifische Anpassung für Chrome/Safari */
 progress::-webkit-progress-bar {
-    background-color: #ddd; /* Hintergrundfarbe */
+    background-color: #ddd;
 }
 
 progress::-webkit-progress-value {
-    background-color: orange; /* Fortschrittsfarbe */
+    background-color: orange;
 }
 
-/* Anpassung für Firefox */
+
 progress::-moz-progress-bar {
-    background-color: orange; /* Fortschrittsfarbe */
+    background-color: orange; 
 }
 #addtoleaderboard{
     position: absolute;

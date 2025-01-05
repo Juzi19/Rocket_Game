@@ -466,7 +466,6 @@ async function getCsrfToken() {
     const response = await fetch('/csrf-token');
     const data = await response.json();
     if (data.csrfToken) {
-        console.log('CSRF Token:', data.csrfToken);
         return data.csrfToken;
     }
     return null;
