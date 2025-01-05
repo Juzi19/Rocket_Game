@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket game</title>
+    <link rel="shortcut icon" href="./rocket.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container_center">
+        <div class="container_text">
+            <p id="level">Level: 1</p>
+            <p id="boost">Boost</p>
+            <progress value="0" id="progressbar"></progress>
+            <p id="coins">Münzen: 0</p>
+            <a href="/leaderbord" id="leaderbord">Leaderbord</a>
+            <a href="/help" id="help">Hilfe</a>
+        </div>
+        <div>
+            <canvas id="game_display"></canvas>
+        </div>
+        <div id="addtoleaderbord">
+            <form action="/send-profile" method="post">
+                <p>Füge deinen Erfolg zum Leaderbord hinzu:</p>
+                <input type="text" name="name" id="name" placeholder="Name...">
+                <input type="hidden" name="csrfToken" id="csrf" value="">
+                <input type="hidden" name="coins" id="coin_input" value="0">
+                <p id="formcoins"></p>
+                <button type="submit">Ok!</button>
+            </form>
+            <hr>
+            <a href="/index.html">Replay</a>
+        </div>
+    </div>
+    
+    <script src="./script.js"></script>
+</body>
+</html>
