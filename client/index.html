@@ -23,7 +23,7 @@
         <div id="addtoleaderboard">
             <form action="/send-profile" method="post">
                 <p>Füge deinen Erfolg zum Leaderboard hinzu:</p>
-                <input type="text" name="name" id="name" placeholder="Name..." required="true">
+                <input type="text" name="name" id="name" placeholder="Name..." required="true" maxlength="20">
                 <input type="hidden" name="csrfToken" id="csrf" value="">
                 <input type="hidden" name="coins" id="coin_input" value="0">
                 <p id="formcoins"></p>
