@@ -22,7 +22,7 @@ const client = new MongoClient(mongoURI);
 //Initializing redis client
 const redisClient = redis.createClient({
     username: 'default',
-    password: 'zailRwALgAOtbibdKluLbxChj70nypwD',
+    password: rediskey,
     socket: {
         host: 'redis-17512.c55.eu-central-1-1.ec2.redns.redis-cloud.com',
         port: 17512
