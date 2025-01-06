@@ -10,5 +10,10 @@
     "sanitize-html": "^2.14.0",
     "uuid": "^11.0.3",
     "xss": "^1.0.15"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
+  
+  
 }
