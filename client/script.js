@@ -81,7 +81,7 @@ class Triangle extends Object{
     return (
             object.x < this.x + this.base &&
             object.x + object.width > this.x &&
-            object.y < this.y - this.height &&
+            object.y < this.y + this.height &&
             object.y + object.height > this.y
         );
     }
