@@ -272,7 +272,6 @@ function level(c){
 function levelchecker(){
     if(level(rewards)){
         mylevel = level(rewards);
-        console.log("Level", mylevel);
         leveltext.innerHTML = `Level: ${mylevel}`;
         coins = Array.of();
         obstacles = Array.of();
@@ -362,7 +361,6 @@ function check_coins(){
             //update DOM
             cointext.innerHTML = `Münzen: ${rewards}`
             levelchecker();
-            console.log('Coin eingesammelt');
         }
     }
 }
@@ -372,12 +370,10 @@ function check_obstacles_rocket(){
         if (obstacle[0].touches(rocket)){
             //update DOM
             alive = false;
-            console.log('Verloren');
         }
     }
     if (!rocket.check_position_in_canvas()){
         alive=false;
-        console.log('Verloren');
     }
 }
 
@@ -459,7 +455,6 @@ async function setCsrfToken() {
     const csrf = await getCsrfToken();
     const csrf_input = document.getElementById('csrf');
     csrf_input.value = csrf;
-    console.log("Inputwert gesetzt auf", csrf);
 }
 
 async function getCsrfToken() {

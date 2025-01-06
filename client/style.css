@@ -115,6 +115,7 @@ progress::-moz-progress-bar {
     bottom: 5vh;
     padding: 1.5rem;
     border-radius: 1rem;
+    border: 2px solid orange;
 }
 form{
     display: flex;
