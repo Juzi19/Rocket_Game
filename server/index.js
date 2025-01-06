@@ -11,11 +11,33 @@ const Message = require('./Message');
 require('dotenv').config();
 const dbURI = process.env.MONGODB_URI;
 const secret = process.env.SECRET;
-
+const rediskey = process.env.REDIS;
+const redis = require('redis');
+const {RedisStore} = require('connect-redis');
 
 //Mongo DB connect
 const mongoURI = dbURI;
 const client = new MongoClient(mongoURI);
+
+//Initializing redis client
+const redisClient = redis.createClient({
+    username: 'default',
+    password: 'zailRwALgAOtbibdKluLbxChj70nypwD',
+    socket: {
+        host: 'redis-17512.c55.eu-central-1-1.ec2.redns.redis-cloud.com',
+        port: 17512
+    }
+});
+
+redisClient.on('error', err => console.log('Redis Client Error', err));
+
+//asnyc function to connect RedisClient, since using commonJS modules
+async function connectRedisClient(){
+    await redisClient.connect();
+    console.log('Redis Client connected')
+}
+
+connectRedisClient();
 
 // Connect to MongoDB
 async function connectToMongoDB() {
@@ -42,10 +64,18 @@ app.use(express.urlencoded({ extended: true }));
 
 // Provides static files from the client
 app.use(express.static(path.join(__dirname, '../client')));
+
+//Session config
+let redisStore = new RedisStore({
+    client: redisClient,
+});
+
 app.use(session({
+    store: redisStore,
     secret: secret,
     resave: false,
     saveUninitialized: true,
+    secure: false,
     cookie: {
         secure: false,
         httpOnly: true,
