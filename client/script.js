@@ -77,11 +77,11 @@ class Triangle extends Object{
     }
 
     touches(object){
-    //simple collision detection
+    //simple collision detection, improved for triangle
     return (
             object.x < this.x + this.base &&
             object.x + object.width > this.x &&
-            object.y < this.y + this.height &&
+            object.y < this.y - this.height &&
             object.y + object.height > this.y
         );
     }
