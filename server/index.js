@@ -12,6 +12,8 @@ require('dotenv').config();
 const dbURI = process.env.MONGODB_URI;
 const secret = process.env.SECRET;
 const rediskey = process.env.REDIS;
+const redishost = process.env.REDIS_HOST;
+const redisport = process.env.redisport;
 const redis = require('redis');
 const {RedisStore} = require('connect-redis');
 
@@ -24,8 +26,8 @@ const redisClient = redis.createClient({
     username: 'default',
     password: rediskey,
     socket: {
-        host: 'redis-17512.c55.eu-central-1-1.ec2.redns.redis-cloud.com',
-        port: 17512
+        host: redishost,
+        port: redisport
     }
 });
 
