@@ -13,7 +13,7 @@ const dbURI = process.env.MONGODB_URI;
 const secret = process.env.SECRET;
 const rediskey = process.env.REDIS;
 const redishost = process.env.REDIS_HOST;
-const redisport = process.env.redisport;
+const redisport = process.env.REDIS_PORT;
 const redis = require('redis');
 const {RedisStore} = require('connect-redis');
 
