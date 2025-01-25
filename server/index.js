@@ -129,7 +129,7 @@ app.get('/api/leaders', async (req,res)=>{
         const db = client.db('test'); // Database name
         const collection = db.collection('messages'); // Collection name
 
-        // Abfrage der Top-10-Einträge
+        // Fetching the top 10 entries
         const topEntries = await collection
             .find()
             .sort({ coins: -1 })
@@ -142,6 +142,26 @@ app.get('/api/leaders', async (req,res)=>{
         res.status(500).json({ error: 'Interner Serverfehler' });
     }
 })
+//Returning the current highscore
+app.get('/api/highscore',async (req,res)=>{
+    try {
+        const db = client.db('test'); // Database name
+        const collection = db.collection('messages'); // Collection name
+
+        // Abfrage der Top-10-Einträge
+        const topEntries = await collection
+            .find()
+            .sort({ coins: -1 })
+            .limit(1)
+            .toArray();
+
+        res.status(200).json(topEntries); // JSON-Antwort zurückgeben
+    } catch (err) {
+        console.error('Fehler beim Abrufen der Daten:', err);
+        res.status(500).json({ error: 'Interner Serverfehler' });
+    }
+})
+
 //Adds players and their score to the database
 app.post('/send-profile', async(req, res)=>{
     const mycsrfToken = req.session.csrfToken;
