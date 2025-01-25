@@ -287,6 +287,7 @@ function levelchecker(){
         create_coins(10);
         create_obstacles(mylevel*10);
     }
+    
 }
 
 
