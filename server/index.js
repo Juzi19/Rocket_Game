@@ -16,6 +16,7 @@ const redishost = process.env.REDIS_HOST;
 const redisport = process.env.REDIS_PORT;
 const redis = require('redis');
 const {RedisStore} = require('connect-redis');
+const helmet = require('helmet');
 
 //Mongo DB connect
 const mongoURI = dbURI;
@@ -60,7 +61,10 @@ mongoose.connect(mongoURI, {
 //Initializes the backend app
 const app = express();
 
-//Middelware
+// Removes X-Powered-By Header
+app.disable('x-powered-by');
+
+//Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -72,12 +76,42 @@ let redisStore = new RedisStore({
     client: redisClient,
 });
 
+
+//Security middleware
+
+//protects against mime sniffing
+app.use(helmet.noSniff());
+
+//Defines csp headers (security)
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: ["'self'"], // only sam domain
+            scriptSrc: ["'self'", "trusted-scripts.example.com"], // safe scripts only
+            styleSrc: ["'self'", "'unsafe-inline'"], // protects form insecure inline scripts
+            imgSrc: ["'self'", "data:"], // specifies image, same domain or embedded files
+            connectSrc: ["'self'", "api.example.com"], // specification for websockets
+        },
+    }),
+);
+
+//activates hsts
+app.use(
+    helmet.hsts({
+        maxAge: 31536000, // 1 year in secs
+        includeSubDomains: true, // HSTS also for subdomains
+        preload: true, // for hsts preload lists
+    })
+)
+
 app.use(session({
     store: redisStore,
     secret: secret,
     resave: false,
     saveUninitialized: true,
+    //production: true
     secure: false,
+    sameSite: 'Strict',
     cookie: {
         secure: false,
         httpOnly: true,
