@@ -79,6 +79,11 @@ let redisStore = new RedisStore({
 
 //Security middleware
 
+
+// client folder for static files, so that the server knows it for content types
+app.use(express.static(path.join(__dirname, '../client')));
+
+
 //protects against mime sniffing
 app.use(helmet.noSniff());
 
@@ -87,10 +92,10 @@ app.use(
     helmet.contentSecurityPolicy({
         directives: {
             defaultSrc: ["'self'"], // only sam domain
-            scriptSrc: ["'self'", "trusted-scripts.example.com"], // safe scripts only
+            scriptSrc: ["'self'"], // safe scripts only
             styleSrc: ["'self'", "'unsafe-inline'"], // protects form insecure inline scripts
             imgSrc: ["'self'", "data:"], // specifies image, same domain or embedded files
-            connectSrc: ["'self'", "api.example.com"], // specification for websockets
+            connectSrc: ["'self'"], // specification for websockets
         },
     }),
 );

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="shortcut icon" href="./rocket.png" type="image/x-icon">
 </head>
 <body>
@@ -17,36 +17,7 @@
         <a href="/" style="padding: 0.7rem;">Zurück zum Spiel</a>
     </div>
     
-    <script>
-        async function fetchTop10() {
-            try {
-                const response = await fetch('/api/leaders');
-                if (!response.ok) {
-                    throw new Error(`Fehler: ${response.status}`);
-                }
-
-                const data = await response.json();
-                displayLeaderboard(data);
-            } catch (error) {
-                console.error('Fehler beim Abrufen der Top-10-Daten:', error);
-            }
-        }
-
-        function displayLeaderboard(entries) {
-            const leaderboard = document.getElementById('leaderboard2');
-            leaderboard.innerHTML = ''; // clear previous items
-            entries.forEach((entry, index) => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${index + 1}. ${entry.name} - ${entry.coins} Coins`;
-                leaderboard.appendChild(listItem);
-            });
-        }
-
-    // fetches and shows data
-    fetchTop10();
-
-
-
+    <script src="/code.js">
     </script>
 </body>
 </html>
