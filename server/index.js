@@ -110,7 +110,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     //production: true
-    secure: false,
+    secure: true,
     sameSite: 'Strict',
     cookie: {
         secure: false,
